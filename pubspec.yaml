@@ -76,7 +76,7 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
+        - asset: asset/fonts/Inter-VariableFont_opsz,wght.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
