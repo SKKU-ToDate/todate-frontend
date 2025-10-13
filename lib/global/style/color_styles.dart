@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
 
 abstract class ColorStyles {
-  static const Color highlight100 = Color(0xFFFB6F92);
-  static const Color highlight80 = Color(0xFFFF8FAB);
-  static const Color highlight60 = Color(0xFFFFB3C6);
-  static const Color highlight40 = Color(0xFFFFC2D1);
-  static const Color highlight20 = Color(0xFFFFE5EC);
+  static const Color highlightDarkest = Color(0xFFFB6F92);
+  static const Color highlightDark = Color(0xFFFF8FAB);
+  static const Color highlightMedium = Color(0xFFFFB3C6);
+  static const Color highlightLight = Color(0xFFFFC2D1);
+  static const Color highlightLightest = Color(0xFFFFE5EC);
 
-  static const Color neutralLight100 = Color(0xFFC5C6CC);
-  static const Color neutralLight80 = Color(0xFFD4D6DD);
-  static const Color neutralLight60 = Color(0xFFE8E9F1);
-  static const Color neutralLight40 = Color(0xFFF8F9FE);
-  static const Color neutralLight20 = Color(0xFFFFFFFF);
+  static const Color neutralLightDarkest = Color(0xFFC5C6CC);
+  static const Color neutralLightDark = Color(0xFFD4D6DD);
+  static const Color neutralLightMedium = Color(0xFFE8E9F1);
+  static const Color neutralLightLight = Color(0xFFF8F9FE);
+  static const Color neutralLightLightest = Color(0xFFFFFFFF);
 
-  static const Color neutralDark100 = Color(0xFF1F2024);
-  static const Color neutralDark80 = Color(0xFF2F3036);
-  static const Color neutralDark60 = Color(0xFF494A50);
-  static const Color neutralDark40 = Color(0xFF71727A);
-  static const Color neutralDark20 = Color(0xFF8F9098);
+  static const Color neutralDarkDarkest = Color(0xFF1F2024);
+  static const Color neutralDarkDark = Color(0xFF2F3036);
+  static const Color neutralDarkMedium = Color(0xFF494A50);
+  static const Color neutralDarkLight = Color(0xFF71727A);
+  static const Color neutralDarkLightest = Color(0xFF8F9098);
 
-  static const Color supportSuccess100 = Color(0xFF298267);
-  static const Color supportSuccess80 = Color(0xFF3AC0A0);
-  static const Color supportSuccess60 = Color(0xFFE7F4E8);
+  static const Color supportSuccessDark = Color(0xFF298267);
+  static const Color supportSuccessMedium = Color(0xFF3AC0A0);
+  static const Color supportSuccessLight = Color(0xFFE7F4E8);
 
-  static const Color supportWarning100 = Color(0xFFE86339);
-  static const Color supportWarning80 = Color(0xFFFFB37C);
-  static const Color supportWarning60 = Color(0xFFFFF4E4);
+  static const Color supportWarningDark = Color(0xFFE86339);
+  static const Color supportWarningMedium = Color(0xFFFFB37C);
+  static const Color supportWarningLight = Color(0xFFFFF4E4);
 
-  static const Color supportError100 = Color(0xFFED3241);
-  static const Color supportError80 = Color(0xFFFF616D);
-  static const Color supportError60 = Color(0xFFFFE2E5);
+  static const Color supportErrorDark = Color(0xFFED3241);
+  static const Color supportErrorMedium = Color(0xFFFF616D);
+  static const Color supportErrorLight = Color(0xFFFFE2E5);
 
   //추가로 정의(카카오톡, 지하철)
   static const Color kakaotalk = Color(0xFFFEE500);
