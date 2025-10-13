@@ -1,6 +1,6 @@
 작성자: @github_nickname
 
-#{이슈 번호 기입}
+Closes #{이슈 번호 기입}
 
 ## 체크 리스트
 
