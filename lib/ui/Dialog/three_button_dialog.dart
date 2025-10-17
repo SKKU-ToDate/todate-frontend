@@ -6,20 +6,22 @@ import 'package:todate/ui/button/terciary_button.dart';
 import '../color_styles.dart';
 import '../text_styles.dart';
 
-class TwoButtonDialog extends StatelessWidget {
+class ThreeButtonDialog extends StatelessWidget {
 
   final String title;
   final String content;
-  final String confirmText;
-  final String cancelText;
+  final String button1Text;
+  final String button2Text;
+  final String button3Text;
   final VoidCallback? onConfirm;
 
-  const TwoButtonDialog({
+  const ThreeButtonDialog({
     super.key,
     required this.title,
     required this.content,
-    this.confirmText = 'button2',//기본값을 확인 취소로 하고 나머지 받을 수 있습니다.
-    this.cancelText = 'button1',
+    this.button1Text = 'button1',
+    this.button2Text = 'button2',
+    this.button3Text = 'button3',
     this.onConfirm,
   });
 
@@ -30,10 +32,11 @@ class TwoButtonDialog extends StatelessWidget {
       backgroundColor: ColorStyles.neutralLight40,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
+        //주석 벗기면 테두리 사라짐
+        /*side: BorderSide(
           color: ColorStyles.neutralDark40,
           width: 1.5,
-        ),
+        ),*/
       ),
       title: Text(
           title,
@@ -50,23 +53,24 @@ class TwoButtonDialog extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-          child: Row(
+          child: Column(
             children: [
-              Expanded(
-                child: SecondaryButton(
-                  text: cancelText,
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+              SecondaryButton(
+                text: button1Text,
+                onPressed: () => Navigator.of(context).pop(),
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: PrimaryButton(
-                  text: confirmText,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    onConfirm?.call();
-                  },
-                ),
+              const SizedBox(height: 8,),
+              SecondaryButton(
+                text: button2Text,
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              const SizedBox(height: 8,),
+              PrimaryButton(
+                text: button3Text,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  onConfirm?.call();
+                },
               ),
             ],
           ),
