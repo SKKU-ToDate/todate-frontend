@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
-
 import '../color_styles.dart';
 import '../text_styles.dart';
 
-class ContextSwitcher extends StatelessWidget {
-  final int selectedIndex;
-  final ValueChanged<int> onTabSelected;
-  final String leftText;
-  final String rightText;
+class ContextSwitcher extends StatefulWidget {
+  final List<String> text;
 
   const ContextSwitcher({
     super.key,
-    required this.selectedIndex,
-    required this.onTabSelected,
-    required this.leftText,
-    required this.rightText,
+    required this.text,
   });
+
+  @override
+  _ContextSwitcherState createState() => _ContextSwitcherState();
+}
+
+class _ContextSwitcherState extends State<ContextSwitcher> {
+  int selectedIndex = 0;
+
+  void onTabSelected(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +39,12 @@ class ContextSwitcher extends StatelessWidget {
           Row(
             children: [
               _SwitchButton(
-                text: leftText,
+                text: widget.text[0],
                 isSelected: selectedIndex == 0,
                 onTap: () => onTabSelected(0),
               ),
               _SwitchButton(
-                text: rightText,
+                text: widget.text[1],
                 isSelected: selectedIndex == 1,
                 onTap: () => onTabSelected(1),
               ),

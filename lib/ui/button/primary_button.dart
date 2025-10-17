@@ -24,41 +24,36 @@ class PrimaryButton extends StatefulWidget {
 
 class _PrimaryButtonState extends State<PrimaryButton> {
 
-
-
   bool isPressed = false;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) {
+    return ElevatedButton(
+      onPressed: () {
+        widget.onPressed();
         setState(() {
-          isPressed = true;
+        isPressed = !isPressed;
         });
       },
-      onTapUp: (_){
-        setState(() {
-          isPressed = false;
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          isPressed = false;
-        });
-      },
-
-      child: Container(
-        height: 40,
-        width: double.infinity,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: isPressed ?  ColorStyles.highlight40 : ColorStyles.highlight100,
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.resolveWith<Color>(
+              (Set<WidgetState> states) {
+            if (states.contains(WidgetState.pressed)) {
+              return ColorStyles.highlight40;
+            }
+            return ColorStyles.highlight100;
+          },
         ),
-        child: Text(
-                widget.text,
-                style: TextStyles.actionMSemiBold.copyWith(color: ColorStyles.neutralLight20),
-              )
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        minimumSize: WidgetStateProperty.all(Size(double.infinity, 40)),
+      ),
+      child: Text(
+        widget.text,
+        style: TextStyles.actionMSemiBold.copyWith(color: ColorStyles.neutralLight20),
       ),
     );
   }
