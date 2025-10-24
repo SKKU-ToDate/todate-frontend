@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 class SecondaryButton extends StatefulWidget {
   final String text;
@@ -32,9 +32,9 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
               (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
-              return ColorStyles.neutralLight60; // 눌렸을 때 색상
+              return ColorStyles.neutralLightMedium; // 눌렸을 때 색상
             }
-            return ColorStyles.neutralLight20; // 기본 색상
+            return ColorStyles.neutralLightLightest; // 기본 색상
           },
         ),
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
@@ -44,7 +44,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         ),
         side: WidgetStateProperty.all(
           BorderSide(
-            color: ColorStyles.highlight100,
+            color: ColorStyles.highlightDarkest,
             width: 1.5,
           ),
         ),
@@ -52,7 +52,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
       ),
       child: Text(
         widget.text,
-        style: TextStyles.actionMSemiBold.copyWith(color: ColorStyles.highlight100),
+        style: TextStyles.actionMSemiBold.copyWith(color: ColorStyles.highlightDarkest),
       ),
     );
   }

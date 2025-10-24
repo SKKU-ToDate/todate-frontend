@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 class BaseTextField extends StatelessWidget {
 
@@ -21,20 +21,20 @@ class BaseTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 5,),
-        Text(label, style: TextStyles.bodyMRegular,),
+        Text(label, style: TextStyles.bodyM,),
         TextField(
           controller: controller,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: ColorStyles.neutralLight100)
+              borderSide: const BorderSide(color: ColorStyles.neutralLightDarkest)
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: ColorStyles.highlight100)
+              borderSide: const BorderSide(color: ColorStyles.highlightDarkest)
             ),
             hintText: placeHolder,
-            hintStyle: TextStyle(color: ColorStyles.neutralLight100)
+            hintStyle: TextStyle(color: ColorStyles.neutralLightDarkest)
           ),
         )
       ],

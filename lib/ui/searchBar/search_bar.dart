@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 class BaseSearchBar extends StatelessWidget {
 
@@ -31,8 +31,8 @@ class BaseSearchBar extends StatelessWidget {
             leading: const Icon(Icons.search),
             hintText: placeHolder,
             hintStyle: WidgetStatePropertyAll(
-              TextStyles.bodyMRegular.copyWith(
-                color: ColorStyles.neutralLight100,
+              TextStyles.bodyM.copyWith(
+                color: ColorStyles.neutralLightDarkest,
               ),
             ),
             elevation: const WidgetStatePropertyAll(0),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../color_styles.dart';
+import '../../global/style/color_styles.dart';
 
 class DraggableSheet extends StatelessWidget {
   final Widget child;
@@ -38,7 +38,7 @@ class DraggableSheet extends StatelessWidget {
                   width: 49,
                   height: 5,
                   decoration: BoxDecoration(
-                    color: ColorStyles.neutralLight80,
+                    color: ColorStyles.neutralLightDark,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),

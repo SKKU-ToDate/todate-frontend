@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
+import '../../global/style/color_styles.dart';
 
 class BaseCheckBox extends StatefulWidget {
   final bool value;
@@ -21,7 +21,7 @@ class _BaseCheckBoxState extends State<BaseCheckBox> {
     return Checkbox(
       value: widget.value,
       onChanged: widget.onChanged,
-      activeColor: ColorStyles.highlight100,
+      activeColor: ColorStyles.highlightDarkest,
       checkColor: Colors.white,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       shape: RoundedRectangleBorder(

@@ -1,10 +1,9 @@
-import 'package:flutter/gestures.dart';
+
 import 'package:flutter/material.dart';
 import 'package:todate/ui/button/primary_button.dart';
 import 'package:todate/ui/button/secondary_button.dart';
-import 'package:todate/ui/button/terciary_button.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 class TwoButtonDialog extends StatelessWidget {
 
@@ -27,7 +26,7 @@ class TwoButtonDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
 
-      backgroundColor: ColorStyles.neutralLight40,
+      backgroundColor: ColorStyles.neutralLightLight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         //주석 벗기면 테두리 사라짐
@@ -39,10 +38,10 @@ class TwoButtonDialog extends StatelessWidget {
       title: Text(
           title,
           textAlign: TextAlign.center,
-          style: TextStyles.headingH3ExtraBold,
+          style: TextStyles.heading3,
       ),
       content: Text(content,
-        style: TextStyles.bodySRegular.copyWith(color: ColorStyles.neutralDark40),
+        style: TextStyles.bodyS.copyWith(color: ColorStyles.neutralDarkLight),
         textAlign: TextAlign.center,
         softWrap: true,
         overflow: TextOverflow.visible,
