@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 
 class SpotCard extends StatelessWidget {
@@ -30,7 +30,7 @@ class SpotCard extends StatelessWidget {
           // ),
         ),
         elevation: 0,
-        color: ColorStyles.neutralLight40, //배경색입니다!
+        color: ColorStyles.neutralLightLight, //배경색입니다!
         child: Padding(
           padding: EdgeInsets.all(16),
           child: Row(
@@ -42,15 +42,15 @@ class SpotCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title,
-                      style: TextStyles.headingH4Bold.copyWith(color: ColorStyles.neutralDark100,)),
+                      style: TextStyles.heading4.copyWith(color: ColorStyles.neutralDarkDarkest,)),
                   if(subtitle != null)//혹시 오류 날 수도 있대서 넣었습니다.
                     Text(subtitle!,
-                        style: TextStyles.bodySRegular.copyWith(color: ColorStyles.neutralDark40)),
+                        style: TextStyles.bodyS.copyWith(color: ColorStyles.neutralDarkLight)),
                 ],
               ),
               IconButton(
                 onPressed: onDelete,
-                icon: Icon(Icons.delete, color: ColorStyles.neutralDark40),
+                icon: Icon(Icons.delete, color: ColorStyles.neutralDarkLight),
               ),
             ],
           ),

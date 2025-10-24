@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 class ContextSwitcher extends StatefulWidget {
   final List<String> text;
@@ -30,7 +30,7 @@ class _ContextSwitcherState extends State<ContextSwitcher> {
       height: 39,
       padding: const EdgeInsets.all(4.0),
       decoration: BoxDecoration(
-        color: ColorStyles.neutralLight40,
+        color: ColorStyles.neutralLightLight,
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Stack(
@@ -53,7 +53,7 @@ class _ContextSwitcherState extends State<ContextSwitcher> {
           const SizedBox(
             height: 16,
             child: VerticalDivider(
-              color: ColorStyles.neutralLight100,
+              color: ColorStyles.neutralLightDarkest,
               width: 1,
             ),
           ),
@@ -88,10 +88,10 @@ class _SwitchButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyles.headingH5Bold.copyWith(
+            style: TextStyles.heading5.copyWith(
               color: isSelected
-                  ? ColorStyles.neutralDark80
-                  : ColorStyles.neutralDark40,
+                  ? ColorStyles.neutralDarkDark
+                  : ColorStyles.neutralDarkLight,
             ),
           ),
         ),

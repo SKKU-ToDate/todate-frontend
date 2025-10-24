@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import '../color_styles.dart';
-import '../text_styles.dart';
+import '../../global/style/color_styles.dart';
+import '../../global/style/text_styles.dart';
 
 //버튼 색을 눌렀을때 highlight40 아닐때 highlight100으로 정함
 //버튼 weight 는 무한, height는 40으로 고정
@@ -39,9 +39,9 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         backgroundColor: WidgetStateProperty.resolveWith<Color>(
               (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
-              return ColorStyles.highlight40;
+              return ColorStyles.highlightLight;
             }
-            return ColorStyles.highlight100;
+            return ColorStyles.highlightDarkest;
           },
         ),
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
@@ -53,7 +53,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
       ),
       child: Text(
         widget.text,
-        style: TextStyles.actionMSemiBold.copyWith(color: ColorStyles.neutralLight20),
+        style: TextStyles.actionMSemiBold.copyWith(color: ColorStyles.neutralLightLightest),
       ),
     );
   }
