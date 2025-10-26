@@ -7,13 +7,13 @@ import 'package:todate/global/style/text_styles.dart';
 class CourseCard extends StatelessWidget {
   final String title;
   final String date;
-  final Image image;
+  final String? imageUrl;
 
   const CourseCard({
     super.key,
     required this.title,
     required this.date,
-    required this.image,
+    this.imageUrl,
   });
 
   @override
@@ -31,7 +31,14 @@ class CourseCard extends StatelessWidget {
             height: 100,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: image,
+              child: imageUrl != null
+                  ? Image.network(
+                      imageUrl!,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          _buildDefaultIcon(),
+                    )
+                  : _buildDefaultIcon(),
             ),
           ),
           Column(
@@ -54,6 +61,21 @@ class CourseCard extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildDefaultIcon() {
+    return Container(
+      width: 100,
+      height: 100,
+      color: ColorStyles.highlightLightest,
+      child: const Center(
+        child: Icon(
+          Icons.photo_size_select_actual_rounded,
+          color: ColorStyles.highlightLight,
+          size: 40,
+        ),
       ),
     );
   }
