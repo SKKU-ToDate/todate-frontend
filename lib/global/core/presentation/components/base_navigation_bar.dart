@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todate/global/style/text_styles.dart';
 
+import '../../../style/color_styles.dart';
+
 class BaseNavigationBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) handleDestinationSelected;
@@ -20,7 +22,13 @@ class BaseNavigationBar extends StatelessWidget {
       selectedIndex: selectedIndex,
       onDestinationSelected: handleDestinationSelected,
       height: 62,
-      labelTextStyle: WidgetStatePropertyAll<TextStyle>(TextStyles.actionS),
+      labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>((states) {
+        final bool isSelected = states.contains(WidgetState.selected);
+        final Color textColor = isSelected
+            ? ColorStyles.neutralDarkDarkest
+            : ColorStyles.neutralDarkLight;
+        return TextStyles.actionS.copyWith(color: textColor);
+      }),
       destinations: destinations,
     );
   }
