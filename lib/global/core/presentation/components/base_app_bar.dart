@@ -24,6 +24,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       centerTitle: centerTitle,
+      surfaceTintColor: Colors.transparent,
       title: Text(
         title,
         style: TextStyles.heading4.copyWith(
