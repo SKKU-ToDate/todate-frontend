@@ -6,12 +6,14 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool showBackButton;
   final Widget? action;
+  final bool centerTitle;
 
   const BaseAppBar({
     super.key,
     required this.title,
     this.showBackButton = false,
     this.action,
+    this.centerTitle = false,
   });
 
   @override
@@ -21,6 +23,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
+      centerTitle: centerTitle,
       title: Text(
         title,
         style: TextStyles.heading4.copyWith(
