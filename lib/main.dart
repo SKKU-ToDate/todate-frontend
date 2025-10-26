@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todate/screen/date_course_page.dart';
+import 'package:todate/screens/main_screen.dart';
 
 void main() {
   runApp(const App());
@@ -10,6 +10,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: DateCoursePage());
+    return MaterialApp(home: MainScreen());
   }
 }

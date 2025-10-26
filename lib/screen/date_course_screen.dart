@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todate/global/core/presentation/components/base_app_bar.dart';
-import 'package:todate/global/core/presentation/components/base_navigation_bar.dart';
 import 'package:todate/global/core/presentation/components/course_card.dart';
 import 'package:todate/global/style/color_styles.dart';
 import 'package:todate/global/style/text_styles.dart';
@@ -57,16 +56,6 @@ class _DateCoursePageState extends State<DateCoursePage> {
             /* TODO: 검색 */
           },
         ),
-      ),
-
-      bottomNavigationBar: BaseNavigationBar(
-        selectedIndex: _bottomNavIndex,
-        handleDestinationSelected: (index) {
-          setState(() {
-            _bottomNavIndex = index;
-          });
-        },
-        destinations: _buildNavigationDestinations(_bottomNavIndex),
       ),
 
       body: Column(
@@ -187,36 +176,5 @@ class _DateCoursePageState extends State<DateCoursePage> {
         ),
       ],
     );
-  }
-
-  List<NavigationDestination> _buildNavigationDestinations(int currentIndex) {
-    final List<IconData> icons = [
-      Icons.home_outlined,
-      Icons.favorite_border,
-      Icons.person_outline,
-    ];
-    final List<IconData> selectedIcons = [
-      Icons.home,
-      Icons.favorite,
-      Icons.person,
-    ];
-    final List<String> labels = ['홈', '데이트 코스', '프로필'];
-
-    return List.generate(labels.length, (index) {
-      final bool isSelected = index == currentIndex;
-      return NavigationDestination(
-        icon: Icon(
-          icons[index],
-          color: isSelected
-              ? ColorStyles.highlightDarkest
-              : ColorStyles.neutralDarkLight,
-        ),
-        selectedIcon: Icon(
-          selectedIcons[index],
-          color: ColorStyles.highlightDarkest,
-        ),
-        label: labels[index],
-      );
-    });
   }
 }

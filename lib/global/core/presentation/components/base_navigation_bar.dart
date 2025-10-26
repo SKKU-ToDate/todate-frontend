@@ -25,9 +25,8 @@ class BaseNavigationBar extends StatelessWidget {
       labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>((states) {
         final bool isSelected = states.contains(WidgetState.selected);
         final Color textColor = isSelected
-            ? ColorStyles
-                  .neutralDarkDarkest // 선택 시
-            : ColorStyles.neutralDarkLight; // 비선택 시
+            ? ColorStyles.neutralDarkDarkest
+            : ColorStyles.neutralDarkLight;
         return TextStyles.actionS.copyWith(color: textColor);
       }),
       destinations: destinations,
