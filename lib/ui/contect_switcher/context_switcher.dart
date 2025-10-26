@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+
 import '../../global/style/color_styles.dart';
 import '../../global/style/text_styles.dart';
 
 class ContextSwitcher extends StatefulWidget {
   final List<String> text;
+  final ValueChanged<int> onIndexChanged;
 
   const ContextSwitcher({
     super.key,
     required this.text,
+    required this.onIndexChanged,
   });
 
   @override
@@ -21,6 +24,7 @@ class _ContextSwitcherState extends State<ContextSwitcher> {
     setState(() {
       selectedIndex = index;
     });
+    widget.onIndexChanged(index);
   }
 
   @override
