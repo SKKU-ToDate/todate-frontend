@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todate/global/core/presentation/screens/profile_screen.dart';
+import 'package:todate/screens/profile_screen.dart';
 
-import '../../../style/color_styles.dart';
-import '../components/base_navigation_bar.dart';
+import '../global/core/presentation/components/base_navigation_bar.dart';
+import '../global/style/color_styles.dart';
 import 'date_course_screen.dart';
 import 'home_screen.dart';
 
