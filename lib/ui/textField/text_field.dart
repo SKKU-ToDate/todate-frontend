@@ -4,14 +4,20 @@ import '../../global/style/text_styles.dart';
 
 class BaseTextField extends StatelessWidget {
 
-  final String label;
+  final String? label;
   final String placeHolder;
   final TextEditingController? controller;
+  final bool obscureText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
 
   const BaseTextField({
     super.key,
-    required this.label,
+    this.label,
     required this.placeHolder,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.obscureText = false,
     this.controller,
   });
 
@@ -21,8 +27,10 @@ class BaseTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 5,),
-        Text(label, style: TextStyles.bodyM,),
+        if(label != null)
+          Text(label!, style: TextStyles.bodyM,),
         TextField(
+          obscureText: obscureText,
           controller: controller,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
@@ -34,7 +42,9 @@ class BaseTextField extends StatelessWidget {
               borderSide: const BorderSide(color: ColorStyles.highlightDarkest)
             ),
             hintText: placeHolder,
-            hintStyle: TextStyle(color: ColorStyles.neutralLightDarkest)
+            hintStyle: TextStyle(color: ColorStyles.neutralLightDarkest),
+            suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon,
           ),
         )
       ],
