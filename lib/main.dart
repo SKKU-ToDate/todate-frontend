@@ -1,15 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:todate/screens/main_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(const App());
+import 'auth/data/datasources/auth_local_datasource.dart';
+import 'auth/data/datasources/auth_remote_datasource.dart';
+import 'auth/data/repositories/auth_repository_impl.dart';
+import 'auth/domain/repositories/auth_repository.dart';
+import 'auth/presentation/screens/login_screen.dart';
+import 'global/core/storage/secure_storage_service.dart';
+import 'screens/main_screen.dart';
+
+Future<void> main() async {
+  // Flutter 바인딩 초기화
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // .env 파일 로드
+  await dotenv.load(fileName: ".env");
+
+  // 의존성 초기화
+  final storage = SecureStorageService();
+  final httpClient = http.Client();
+  final googleSignIn = GoogleSignIn.instance;
+
+  final authRepository = AuthRepositoryImpl(
+    remoteDataSource: AuthRemoteDataSource(client: httpClient),
+    localDataSource: AuthLocalDataSource(storage: storage),
+    googleSignIn: googleSignIn,
+  );
+
+  runApp(App(authRepository: authRepository));
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final AuthRepository authRepository;
+
+  const App({super.key, required this.authRepository});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MainScreen());
+    return MaterialApp(
+      title: 'Todate',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => FutureBuilder<bool>(
+              future: authRepository.isAuthenticated(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(
+                    body: Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                final isAuthenticated = snapshot.data ?? false;
+                if (isAuthenticated) {
+                  return MainScreen();
+                } else {
+                  return LoginScreen(authRepository: authRepository);
+                }
+              },
+            ),
+        '/home': (context) => MainScreen(),
+        '/login': (context) => LoginScreen(authRepository: authRepository),
+      },
+    );
   }
 }
