@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import '../widgets/google_sign_in_button.dart';
-import '../../domain/repositories/auth_repository.dart';
 
 /// 로그인 화면
 ///
 /// Google 로그인 버튼을 제공합니다.
 class LoginScreen extends StatelessWidget {
-  final AuthRepository authRepository;
-
-  const LoginScreen({
-    super.key,
-    required this.authRepository,
-  });
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +22,6 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 48),
               GoogleSignInButton(
-                authRepository: authRepository,
-                onSignInSuccess: () {
-                  Navigator.pushReplacementNamed(context, '/home');
-                },
                 onSignInFailure: (error) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('로그인 실패: $error')),

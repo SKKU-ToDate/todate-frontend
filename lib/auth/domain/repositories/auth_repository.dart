@@ -15,4 +15,10 @@ abstract class AuthRepository {
 
   /// 인증 상태 확인
   Future<bool> isAuthenticated();
+
+  /// 저장된 사용자 이름(이메일) 가져오기
+  Future<String?> getUsername();
+
+  /// 저장된 사용자 이름 가져오기
+  Future<String?> getName();
 }

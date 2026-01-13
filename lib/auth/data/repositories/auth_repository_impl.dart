@@ -49,13 +49,17 @@ class AuthRepositoryImpl implements AuthRepository {
       final authToken = AuthTokenModel.fromJson(tokenData);
       debugPrint('[AuthRepository] JWT 토큰 파싱 성공');
 
-      // 4. JWT 토큰 로컬 저장
-      debugPrint('[AuthRepository] 4. JWT 토큰 로컬 저장 시작');
+      // 4. JWT 토큰 및 사용자 정보 로컬 저장
+      debugPrint('[AuthRepository] 4. JWT 토큰 및 사용자 정보 로컬 저장 시작');
       await localDataSource.saveTokens(
         accessToken: authToken.accessToken,
         refreshToken: authToken.refreshToken,
       );
-      debugPrint('[AuthRepository] JWT 토큰 로컬 저장 완료');
+      await localDataSource.saveUserInfo(
+        username: authToken.username,
+        name: authToken.name,
+      );
+      debugPrint('[AuthRepository] JWT 토큰 및 사용자 정보 로컬 저장 완료');
 
       debugPrint('[AuthRepository] 전체 로그인 프로세스 성공');
       return authToken;
@@ -81,5 +85,15 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<bool> isAuthenticated() async {
     final token = await getAccessToken();
     return token != null && token.isNotEmpty;
+  }
+
+  @override
+  Future<String?> getUsername() async {
+    return await localDataSource.getUsername();
+  }
+
+  @override
+  Future<String?> getName() async {
+    return await localDataSource.getName();
   }
 }

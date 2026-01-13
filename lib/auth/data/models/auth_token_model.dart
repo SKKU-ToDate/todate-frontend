@@ -9,6 +9,8 @@ class AuthTokenModel extends AuthToken {
     required super.refreshToken,
     required super.tokenType,
     required super.expiresIn,
+    required super.username,
+    required super.name,
   });
 
   /// JSON에서 모델 생성
@@ -18,6 +20,8 @@ class AuthTokenModel extends AuthToken {
       refreshToken: json['refresh_token'] as String,
       tokenType: json['token_type'] as String,
       expiresIn: json['expires_in'] as int,
+      username: json['username'] as String,
+      name: json['name'] as String,
     );
   }
 
@@ -28,6 +32,8 @@ class AuthTokenModel extends AuthToken {
       'refresh_token': refreshToken,
       'token_type': tokenType,
       'expires_in': expiresIn,
+      'username': username,
+      'name': name,
     };
   }
 }

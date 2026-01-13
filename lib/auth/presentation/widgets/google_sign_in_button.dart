@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
-import '../../domain/repositories/auth_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../providers/auth_provider.dart';
 
 /// Google 로그인 버튼 위젯
-class GoogleSignInButton extends StatefulWidget {
-  final AuthRepository authRepository;
-  final VoidCallback onSignInSuccess;
+class GoogleSignInButton extends ConsumerStatefulWidget {
   final Function(String) onSignInFailure;
 
   const GoogleSignInButton({
     super.key,
-    required this.authRepository,
-    required this.onSignInSuccess,
     required this.onSignInFailure,
   });
 
   @override
-  State<GoogleSignInButton> createState() => _GoogleSignInButtonState();
+  ConsumerState<GoogleSignInButton> createState() => _GoogleSignInButtonState();
 }
 
-class _GoogleSignInButtonState extends State<GoogleSignInButton> {
+class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
   bool _isLoading = false;
 
   Future<void> _handleSignIn() async {
@@ -26,10 +23,10 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
     setState(() => _isLoading = true);
 
     try {
-      debugPrint('[GoogleSignInButton] authRepository.signInWithGoogle() 호출');
-      await widget.authRepository.signInWithGoogle();
+      debugPrint('[GoogleSignInButton] authNotifier.signInWithGoogle() 호출');
+      await ref.read(authProvider.notifier).signInWithGoogle();
       debugPrint('[GoogleSignInButton] 로그인 성공');
-      widget.onSignInSuccess();
+      // Riverpod이 자동으로 상태를 업데이트하므로 화면이 자동으로 MainScreen으로 전환됨
     } catch (e) {
       debugPrint('[GoogleSignInButton] 로그인 실패: $e');
       widget.onSignInFailure(e.toString());
