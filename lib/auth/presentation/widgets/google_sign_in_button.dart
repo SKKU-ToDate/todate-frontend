@@ -22,12 +22,16 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
   bool _isLoading = false;
 
   Future<void> _handleSignIn() async {
+    debugPrint('[GoogleSignInButton] 로그인 시작');
     setState(() => _isLoading = true);
 
     try {
+      debugPrint('[GoogleSignInButton] authRepository.signInWithGoogle() 호출');
       await widget.authRepository.signInWithGoogle();
+      debugPrint('[GoogleSignInButton] 로그인 성공');
       widget.onSignInSuccess();
     } catch (e) {
+      debugPrint('[GoogleSignInButton] 로그인 실패: $e');
       widget.onSignInFailure(e.toString());
     } finally {
       if (mounted) {

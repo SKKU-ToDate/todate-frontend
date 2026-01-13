@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Google Sign-In Android Client ID -->
+    <string name="default_web_client_id">1047257872992-1482opfqkf4gvpivh5g6nqaf0qtj5upj.apps.googleusercontent.com</string>
+</resources>

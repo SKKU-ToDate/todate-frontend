@@ -23,6 +23,9 @@ Future<void> main() async {
   final httpClient = http.Client();
   final googleSignIn = GoogleSignIn.instance;
 
+  // GoogleSignIn 초기화
+  await googleSignIn.initialize();
+
   final authRepository = AuthRepositoryImpl(
     remoteDataSource: AuthRemoteDataSource(client: httpClient),
     localDataSource: AuthLocalDataSource(storage: storage),
@@ -51,15 +54,19 @@ class App extends StatelessWidget {
               future: authRepository.isAuthenticated(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
+                  debugPrint('[App] 인증 상태 확인 중...');
                   return const Scaffold(
                     body: Center(child: CircularProgressIndicator()),
                   );
                 }
 
                 final isAuthenticated = snapshot.data ?? false;
+                debugPrint('[App] 인증 상태: $isAuthenticated');
                 if (isAuthenticated) {
+                  debugPrint('[App] MainScreen으로 이동');
                   return MainScreen();
                 } else {
+                  debugPrint('[App] LoginScreen으로 이동');
                   return LoginScreen(authRepository: authRepository);
                 }
               },
